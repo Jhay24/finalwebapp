@@ -1,0 +1,302 @@
+html,body{
+  font-family: 'Source Sans Pro', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.graph-cont{
+  width: calc(100% - 40px);
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+h1,h2,h3{
+  text-align: center;
+  color: #34495e;
+}
+.bar{
+  height: 30px;
+  max-width: 800px;
+  margin: 0 auto 10px auto;
+  line-height: 30px;
+  font-size: 16px;
+  color: white;
+  padding: 0 0 0 10px;
+  position: relative;
+}
+.bar::before{
+  content: '';
+  width: 100%;
+  position: absolute;
+  left: 0;
+  height: 30px;
+  top: 0;
+  z-index: -2;
+  background: #ecf0f1;
+}
+.bar::after{
+  content: '';
+  background: #8a2be2;
+  height: 30px;
+  transition: 0.7s;
+  display: block;
+  width: 100%;
+  -webkit-animation: bar-before 1 1.8s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.bar1::after{
+  max-width: 100%;
+  color:#8a2be2;
+  
+  
+}
+
+
+.bar2::after{
+  max-width: 98%;
+}
+.bar3::after{
+  max-width: 96%;
+}
+.bar4::after{
+  max-width: 94%;
+}
+.bar5::after{
+  max-width: 92%;
+}
+.bar6::after{
+  max-width: 90%;
+}
+.bar7::after{
+  max-width: 88%;
+}
+
+.bar8::after{
+  max-width: 86%;
+}
+.bar9::after{
+  max-width: 84%;
+}
+
+.bar10::after{
+  max-width: 82%;
+}
+.bar11::after{
+  max-width: 80%;
+}
+
+
+.bar12::after{
+  max-width: 78%;
+}
+
+
+
+.bar13::after{
+  max-width: 76%;
+}
+
+.bar14::after{
+  max-width: 74%;
+}
+
+.bar15::after{
+  max-width: 72%;
+}
+
+.bar16::after{
+  max-width: 70%;
+}
+
+.bar17::after{
+  max-width: 68%;
+}
+.bar18::after{
+  max-width: 66%;
+}
+
+.bar19::after{
+  max-width: 64%;
+}
+
+.bar20::after{
+  max-width: 62%;
+}
+.bar21::after{
+  max-width: 60%;
+}
+
+
+.bar22::after{
+  max-width: 58%;
+}
+.bar23::after{
+  max-width: 56%;
+}
+
+.bar24::after{
+  max-width: 54%;
+}
+
+.bar25::after{
+  max-width: 52%;
+}
+
+.bar26::after{
+  max-width: 50%;
+}
+
+.bar27::after{
+  max-width: 48%;
+}
+.bar28::after{
+  max-width: 46%;
+}
+.bar29::after{
+  max-width: 44%;
+}
+.bar30::after{
+  max-width: 42%;
+}
+.bar31::after{
+  max-width: 40%;
+}
+.bar32::after{
+  max-width: 38%;
+}
+.bar33::after::after{
+  max-width: 36%;
+}
+.bar34::after{
+  max-width: 34%;
+}
+.bar35::after{
+  max-width: 32%;
+}
+
+.bar36::after{
+  max-width: 30%;
+}
+
+.bar37::after{
+  max-width: 28%;
+}
+
+.bar38::after{
+  max-width: 26%;
+}
+
+.bar39::after{
+  max-width: 24%;
+}
+
+.bar40::after{
+  max-width: 22%;
+}
+
+.bar41::after{
+  max-width: 20%;
+}
+
+.bar42::after{
+  max-width: 18%;
+}
+.bar43::after{
+  max-width: 16%;
+}
+
+.bar44::after{
+  max-width: 14%;
+}
+
+.bar45::after{
+  max-width: 12%;
+}
+
+.bar46::after{
+  max-width: 10%;
+}
+
+.bar47::after{
+  max-width: 8%;
+}
+
+.bar48::after{
+  max-width: 6%;
+}
+
+.bar49::after{
+  max-width: 4%;
+}
+
+.bar50::after{
+  max-width: 2%;
+}
+
+.bar51::after{
+  max-width: 1%;
+}
+
+.bar52::after{
+  max-width: 0.08%;
+}
+
+.bar53::after{
+  max-width: 0.05%;
+}
+
+.bar54::after{
+  max-width: 0.03%;
+}
+.bar55::after{
+  max-width: 5%;
+}
+
+.bar56::after{
+  max-width:10%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@-webkit-keyframes bar-before{
+  0%{
+    width: 0px;
+  }
+  100%{
+    width: 100%;
+  }
+}
+
+.how-cont{
+  width: calc(100% - 40px);
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+code {
+  padding: 5px;
+  background: #ecf0f1;
+  display: block;
+}
+pre{
+  padding: 0;
+  margin: 0;
+}

@@ -1,0 +1,245 @@
+
+<html>
+    <head>
+      <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+             <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+            <title>Intelligent Career Guidance System</title>
+    
+            <!-- Google font -->
+            <link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600" rel="stylesheet">
+            
+    
+      <link href="{{ url_for('static', filename='chart.css') }}" rel="stylesheet" media="all">
+      
+      <link href="{{ url_for('static', filename='css1/bootstrap.min.css') }}" rel="stylesheet" media="all">
+      
+      <link href="{{ url_for('static', filename='css1/font-awesome.min.css') }}" rel="stylesheet" media="all">
+      
+      <link href="{{ url_for('static', filename='css1/s.css') }}" rel="stylesheet" media="all">
+      <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400' rel='stylesheet' type='text/css'>
+    </head>
+ 
+    <body>
+    <!--Header-->
+            <header id="header" class="transparent-nav" style="position: fixed;background-color: rgb(120, 70, 167); top: 0;">
+                <div class="container">
+    
+                    <div class="navbar-header">
+                        <!-- Logo -->
+                        <div class="navbar-brand">
+                            <a class="logo" href="http://127.0.0.1/php%20CAREERLY/main.php">Course.Co</a>
+                        </div>
+                        <!-- /Logo -->
+    
+                        <!-- Mobile toggle -->
+                        <button class="navbar-toggle">
+                            <span></span>
+                        </button>
+                        <!-- /Mobile toggle -->
+                    </div>
+    
+                    <?php
+                        // Check if the user is logged in, if not then redirect him to login page
+                        if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true):
+                    ?>
+    
+                    <!-- Navigation -->
+                    
+                    <?php else: ?>
+                        <!-- Navigation -->
+                    <nav id="nav">
+                        <ul class="main-menu nav navbar-nav navbar-right">
+                            <li><a href="#">Home</a></li>
+                            <li class="dropdown">
+                                <a class="dropbtn" href="javascript:void(0)">Services <span> &#11167;</span></a>
+                                <div class="dropdown-content">
+                                    <a href="http://127.0.0.1:5000/">Specialization Track Prediction</a>
+                                    <a href="#">Online Courses</a>
+                                  
+                                    <a href="#">Explore Specialization</a>
+                                    
+                                </div>
+                            </li>
+                            <li><a href="#about">About </a></li>
+                        
+                            <li><a href="http://127.0.0.1/php%20CAREERLY/logout.php">Log out</a></li>
+                            
+                            
+                        </ul>
+                    </nav>
+                    <!-- /Navigation -->
+                    <?php endif ?>
+    
+                </div>
+            </header>
+        
+       <br><br><br><br><br><br><br>
+       <b><h1>Hey! these are the results of your assessments.....</h1><br><br></b>
+       <div class="graph-cont">
+       <h1></h1>
+        
+            
+            
+          
+         
+         {%for val in pred: %}
+            <div class="bar 
+            
+            {{'bar55' if val/1*100 >=0.0 and val/1*100 < 0.1}}
+            {{'bar54' if val/1*100 >=0.2 and val/1*100 < 0.3}}  
+            {{'bar53' if val/1*100 >=0.4 and val/1*100 < 0.5}} 
+            {{'bar52' if val/1*100 >=0.7 and val/1*100 < 0.8}} 
+            {{'bar51' if val/1*100 >=0.09 and val/1*100 < 1}} 
+            {{'bar56' if val/1*100 >=0.09 and val/1*100 < 10.4}} 
+            {{'bar50' if val/1*100 >=1 and val/1*100 < 3}}
+            {{'bar49' if val/1*100 >=3 and val/1*100 < 5}}
+            {{'bar48' if val/1*100 >=5 and val/1*100 < 7}}
+            {{'bar47' if val/1*100 >=7 and val/1*100 < 9}} 
+            {{'bar46' if val/1*100 >=9 and val/1*100 < 11}} 
+            {{'bar45' if val/1*100 >=11 and val/1*100 < 13}} 
+            {{'bar44' if val/1*100 >=13 and val/1*100 < 15}}
+            {{'bar43' if val/1*100 >=15 and val/1*100 < 17}}  
+            {{'bar42' if val/1*100 >=17 and val/1*100 < 19}} 
+            {{'bar41' if val/1*100 >=19 and val/1*100 < 21}}  
+            {{'bar40' if val/1*100 >=21 and val/1*100 < 23}}
+            {{'bar39' if val/1*100 >=23 and val/1*100 < 25}} 
+            {{'bar38' if val/1*100 >=25 and val/1*100 < 27}} 
+            {{'bar37' if val/1*100 >=27 and val/1*100 < 29}}   
+            {{'bar36' if val/1*100 >=29 and val/1*100 < 31}} 
+            {{'bar35' if val/1*100 >=31 and val/1*100 < 33}}
+            {{'bar34' if val/1*100 >=33 and val/1*100 < 35}}
+            {{'bar33' if val/1*100 >=36 and val/1*100 < 37}}
+            {{'bar32' if val/1*100 >=37 and val/1*100 < 39}}
+            {{'bar31' if val/1*100 >=39 and val/1*100 < 41}}
+            {{'bar30' if val/1*100 >=41 and val/1*100 < 43}}
+            {{'bar29' if val/1*100 >=43 and val/1*100 < 45}}
+            {{'bar28' if val/1*100 >=45 and val/1*100 < 47}}
+            {{'bar27' if val/1*100 >=47 and val/1*100 < 49}}
+            {{'bar26' if val/1*100 >=49 and val/1*100 < 51}}
+            {{'bar25' if val/1*100 >=51 and val/1*100 < 53}}
+            {{'bar24' if val/1*100 >=53 and val/1*100 < 55}}
+            {{'bar23' if val/1*100 >=55 and val/1*100 < 57}}
+            {{'bar22' if val/1*100 >=57 and val/1*100 < 59}}
+            {{'bar21' if val/1*100 >=59 and val/1*100 < 61}}
+            {{'bar20' if val/1*100 >=61 and val/1*100 < 63}}
+            {{'bar19' if val/1*100 >=63 and val/1*100 < 65}}
+            {{'bar18' if val/1*100 >=65 and val/1*100 < 67}}
+            {{'bar17' if val/1*100 >=67 and val/1*100 < 69}}
+            {{'bar16' if val/1*100 >=69 and val/1*100 < 71}}
+            {{'bar15' if val/1*100 >=71 and val/1*100 < 72}}
+            {{'bar14' if val/1*100 >=73 and val/1*100 < 74}}
+            {{'bar13' if val/1*100 >=75 and val/1*100 < 77}}
+            {{'bar12' if val/1*100 >=77 and val/1*100 < 78}}
+            {{'bar11' if val/1*100 >=79 and val/1*100 < 81}}
+            {{'bar10' if val/1*100 >=81 and val/1*100 < 83}}
+            {{'bar9' if val/1*100 >=83 and val/1*100 < 85}}
+            {{'bar8' if val/1*100 >=85 and val/1*100 < 87}}
+            {{'bar7' if val/1*100 >=87 and val/1*100 < 89}}	
+            {{'bar6' if val/1*100 >=89 and val/1*100 < 91}}
+            {{'bar5' if val/1*100 >=91 and val/1*100 < 93}}
+            {{'bar4' if val/1*100 >=93 and val/1*100 < 95}}
+            {{'bar3' if val/1*100 >=95 and val/1*100 < 97}}
+            {{'bar2' if val/1*100 >=97 and val/1*100 < 99}}
+            {{'bar1' if val/1*100 >=99 and val/1*100 < 100}}
+            
+             
+    
+    
+    
+    
+            
+        
+            
+            " >
+                <a href="#" style="text-decoration: none;">
+                <font color="white">{{ roles[loop.index0] }}</font>
+                <!-- <font color="white">{{val/1*100}}%</font> -->
+            
+                
+            </a>
+            </div><br> 
+         {%endfor%}
+         
+        
+        <i><h2><p><a href="#">To know more about these specilization track click here!</a></p></h2></i>
+         
+         
+         
+         
+        
+         
+         
+         
+          
+       <!--<div class="bar bar2"><a href="#" style="text-decoration: none;"><font color="white">{{ job1 }}</a></font></div><br>
+       <div class="bar bar3" ><a href="#" style="text-decoration: none;"><font color="white">{{ job2 }}</a></font></div><br>
+       <div class="bar bar4"><a href="#" style="text-decoration: none;"><font color="white">{{ job3 }}</a></font></div><br>-->
+        
+      </div>
+      <br><br><br><br><br><br><br>
+      <!-- Footer -->
+            <footer id="footer" class="section">
+    
+                <!-- container -->
+                <div class="container">
+    
+                    <!-- row -->
+                    <div class="row">
+    
+                        <!-- footer logo -->
+                        <div class="col-md-6">
+                            <div class="footer-logo">
+                                <a class="logo" style="font-size: 30px;" href="main.php">Course.Co</a>
+                            </div>
+                        </div>
+                        <!-- footer logo -->
+    
+    
+                    </div>
+                    <!-- /row -->
+    
+                    <!-- row -->
+                    <div id="bottom-footer" class="row">
+    
+                        <!-- social -->
+                        <div class="col-md-4 col-md-push-8">
+                            
+                        </div>
+                        <!-- /social -->
+    
+                        <!-- copyright -->
+                        <div class="col-md-8 col-md-pull-4">
+                            <div class="footer-copyright">
+                                <span>&copy; 2022. All Rights Reserved. | Team KangKong </span>
+                            </div>
+                        </div>
+                        <!-- /copyright -->
+                        </div>
+                    <!-- row -->
+    
+                </div>
+                <!-- /container -->
+    
+            </footer>
+            <!-- /Footer -->
+    
+    </body>
+    </html>
+    <!--
+    
+               
+          #print(jobs_dict[predictions[0]])
+          job = {}
+          #job[0] = jobs_dict[predictions[0]]
+          index = 1
+         #
+    
+    -->
+    
+    
+    
+    
+    

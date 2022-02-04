@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+		<title>SPECIALIZATION TRACK RECOMMENDATION SYSTEM</title>
+
+		<!-- Google font -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600" rel="stylesheet">
+		
+
+  <link href="{{ url_for('static', filename='chart.css') }}" rel="stylesheet" media="all">
+  
+  <link href="{{ url_for('static', filename='css1/bootstrap.min.css') }}" rel="stylesheet" media="all">
+  
+  <link href="{{ url_for('static', filename='css1/font-awesome.min.css') }}" rel="stylesheet" media="all">
+  
+  <link href="{{ url_for('static', filename='css1/s.css') }}" rel="stylesheet" media="all">
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<!--Header-->
+        <header id="header" class="transparent-nav" style="position: fixed;background-color: rgb(120, 70, 167 ); top: 0;">
+			<div class="container">
+
+				<div class="navbar-header">
+					<!-- Logo -->
+					<div class="navbar-brand">
+						<a class="logo" href="http://127.0.0.1/php%20CAREERLY/main.php">Course.Co</a>
+					</div>
+					<!-- /Logo -->
+
+					<!-- Mobile toggle -->
+					<button class="navbar-toggle">
+						<span></span>
+					</button>
+					<!-- /Mobile toggle -->
+				</div>
+
+				<?php
+					// Check if the user is logged in, if not then redirect him to login page
+					if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true):
+				?>
+
+				<!-- Navigation -->
+				
+				<?php else: ?>
+					<!-- Navigation -->
+				<nav id="nav">
+					<ul class="main-menu nav navbar-nav navbar-right">
+						<li><a href="http://127.0.0.1/php%20CAREERLY/main.php">Home</a></li>
+                        <li class="dropdown">
+                            <a class="dropbtn" href="javascript:void(0)">Services <span>&#11167;</span></i></a>
+                            <div class="dropdown-content">
+								<a href="http://127.0.0.1/php%20CAREERLY/main.php">Specialization Track Prediction</a>
+                                <a href="http://127.0.0.1/php%20CAREERLY/courses.php">Online Courses</a>
+                                <!--<a href="http://127.0.0.1/php%20CAREERLY/blog.php">Blogs</a>
+                                <a href="http://127.0.0.1/php%20CAREERLY/daily_bytes.php">Daily bytes</a>
+                                <a href="http://127.0.0.1/php%20CAREERLY/community.php">Community</a>-->
+								<a href="http://127.0.0.1/php%20CAREERLY/blog.php">Explore Specialization</a>
+								
+                            </div>
+                        </li>
+						<li><a href="#about">About </a></li>
+						
+						<li><a href="http://127.0.0.1/php%20CAREERLY/logout.php" >Log out</a></li>
+						
+                        
+					</ul>
+				</nav>
+				<!-- /Navigation -->
+				<?php endif ?>
+
+			</div>
+		</header>
+		<div class="hero-area section">
+
+			<!-- Backgound Image -->
+			<div class="bg-image bg-parallax overlay" style="background-image:url(static/img/bgc2.jpg); " ></div>
+			<!-- /Backgound Image -->
+
+			<div class="container">
+				<div class="row" >
+					<div class="col-md-10 col-md-offset-1 text-center">
+						<ul class="hero-area-tree">
+							<li><a href="http://127.0.0.1/php%20CAREERLY/main.php">Services</a></li>
+							<li><a href="http://127.0.0.1:5000/">Career Prediction</a></li>
+						</ul>
+						<h1 class="white-text">Get Started to Discover Yourself!</h1>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+    <!-- Icons font CSS-->
+
+    <link href=" {{ url_for('static', filename='vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
+
+    <link href="{{ url_for('static', filename='vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ url_for('static', filename='css/range.scss') }}" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+
+    <link href="{{ url_for('static', filename='vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
+
+    <link href="{{ url_for('static', filename='vendor/datepicker/daterangepicker.css') }}" rel="stylesheet" media="all">
+      <!-- Main CSS-->
+
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+					<h2 class="title">Hey, {{ n }}. Rate Yourself!</h2>
+				
+                </div>
+				
+				
+                <div class="card-body">
+                    
+					<form  method="POST", action="{{url_for('predict')}}">
+						
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q1"><b>Web Designing</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q1">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								</select>
+							</div>
+						
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q2"><b>Website Design Project</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q2">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+						
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q3"><b>Enabling Technologies of Client-server</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q3">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q4"><b>Characteristics of Clients and Servers</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q4">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+						
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q5"><b>Role of Middleware.</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q5">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q6"><b>Server-side Scripting and Large Site Management.</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q6">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+						
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q7"><b>Design and Develop Dynamic Websites</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q7">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+						
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q8"><b>Understanding in Mobile computer systems</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q8">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								</select>
+							</div>
+							
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q9"><b>Use and Effects of Mobile Computing Devices</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q9">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q10"><b>Adobe Photoshop</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q10">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q11"><b>Camera Handling Techniques</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q11">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q12"><b>Elements of Art</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q12">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q13"><b>Principles of Design</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q13">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q14"><b>Principles of Digital Drawing.</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q14">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+						
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q15"><b>Sketching Techniques </b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q15">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+						
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q16"><b>2D Fundamental Techniques</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q16">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q17"><b>Developing Storyboards</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q17">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q18"><b>SBasics of Live Audio</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q18">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+						
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q19"><b>Lighting and Vision System</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q19">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q20"><b>2D Fundamental Techniques</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q20">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q21"><b>Photorealistic Rendering</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q21">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q22"><b>Supervised  and Unsupervised Machine Learning</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q22">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+						
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q23"><b>Data Mining</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q23">
+									<option value="">Choose option</option>
+									  <option value="1">Basic</option>
+									  <option value="2">Intermediate</option>
+									  <option value="3">Advance</option>
+									  <option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q24"><b>Text Classification</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q24">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q25"><b>Sentiment Analysis</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q25">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q26"><b>Robotics Devices and Systems</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q26">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q27"><b>Motion Planning and Multiple-robot Coordination.</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q27">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q28"><b>Effective Communication .</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q28">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+						
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q29"><b>Concepts of Business Communication</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q29">
+									<option value="">Choose option</option>
+									  <option value="1">Basic</option>
+									  <option value="2">Intermediate</option>
+									  <option value="3">Advance</option>
+									  <option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q30"><b>Maintaining Outsourced Service.</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q30">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								</select>
+							</div>
+							
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q31"><b> Outsourcing Operations</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q31">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							 
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q32"><b>Customer Service Skills.</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q32">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								  </select>
+							</div>
+							
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3  col-form-label" for="q33"><b>Analytical Skills</b></label>
+							<div class="col-sm-9">
+								<select class="form-select form-control" required aria-label="select example" name="q33">
+									<option value="">Choose option</option>
+									<option value="1">Basic</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advance</option>
+									<option value="4">Expert</option>
+								</select>
+							</div>
+							
+						</div>
+
+
+
+
+						<!-- ############################################################################################## -->
+						<!-- ############################################################################################## -->
+						<!-- ############################################################################################## -->
+						<!-- ############################################################################################## -->
+				
+			
+			
+
+				<div class="form-group row">
+					<label class="col-sm-3  col-form-label" for="q34"><b>System Optimization.</b></label>
+					<div class="col-sm-9">
+						<select class="form-select form-control" required aria-label="select example" name="q34">
+							<option value="">Choose option</option>
+							<option value="1">Basic</option>
+							<option value="2">Intermediate</option>
+							<option value="3">Advance</option>
+							<option value="4">Expert</option>
+						  </select>
+					</div>
+					
+				</div>
+                <center><button class="btn btn--radius-3 btn--red" type="submit" >Predict!</button></center>
+                </div>						
+				</div>
+</div>		
+
+</form>		
+			
+    <!-- Footer -->
+		<footer id="footer" class="section">
+
+			<!-- container -->
+			<div class="container">
+
+				<!-- row -->
+				<div class="row">
+
+					<!-- footer logo -->
+					<div class="col-md-6">
+						<div class="footer-logo">
+							<a class="logo" style="font-size: 30px;" href="main.php">Course.Co</a>
+						</div>
+					</div>
+					<!-- footer logo -->
+
+
+				</div>
+				<!-- /row -->
+
+				<!-- row -->
+				<div id="bottom-footer" class="row">
+
+					<!-- social -->
+					<div class="col-md-4 col-md-push-8">
+						
+					</div>
+					<!-- /social -->
+
+					<!-- copyright -->
+					<div class="col-md-8 col-md-pull-4">
+						<div class="footer-copyright">
+							<span>&copy; 2022. All Rights Reserved. | Team KangKong </span>
+						</div>
+					</div>
+					<!-- /copyright -->
+					</div>
+				<!-- row -->
+
+			</div>
+			<!-- /container -->
+
+		</footer>
+		<!-- /Footer -->
+		
+
+</body>
+
+</html>
